@@ -1,0 +1,19 @@
+{
+    "name": "vetruvet/laravel-phpredis",
+    "description": "Use phpredis as the redis connection in Laravel",
+    "license": "Apache",
+    "authors": [
+        {
+            "name": "Valera Trubachev",
+            "email": "vetruvet@gmail.com"
+        }
+    ],
+    "require": {
+
+    },
+    "autoload": {
+        "psr-0": {
+            "Vetruvet\\PhpRedis": "src/"
+        }
+    }
+}
