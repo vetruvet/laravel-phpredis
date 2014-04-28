@@ -2,7 +2,7 @@
 
 namespace Vetruvet\PhpRedis;
 
-use Vetruvet\PhpRedis\Database;
+use Illuminate\Support\ServiceProvider;
 
 class PhpRedisServiceProvider extends ServiceProvider {
 	

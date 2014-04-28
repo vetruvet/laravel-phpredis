@@ -2,7 +2,9 @@
 
 namespace Vetruvet\PhpRedis;
 
-class Database extends Illuminate\Redis\Database {
+use \Redis;
+
+class Database extends \Illuminate\Redis\Database {
 
     /**
      * Create a new aggregate client supporting sharding.
@@ -74,7 +76,7 @@ class Database extends Illuminate\Redis\Database {
         foreach ($servers as $key => $server) {
         	if ($key === 'cluster') continue;
 
-            $redis = new Redis($server);
+            $redis = new Redis();
 
             $host    = empty($server['host'])    ? '127.0.0.1' : $server['host'];
             $port    = empty($server['port'])    ? '6379'      : $server['port'];
