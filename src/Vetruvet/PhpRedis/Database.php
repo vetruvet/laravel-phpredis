@@ -30,8 +30,12 @@ class Database extends \Illuminate\Redis\Database {
             if (!empty($server['serializer'])) {
             	if ($server['serializer'] === 'none') {
             		$serializer = Redis::SERIALIZER_PHP;
-            	} else if ($server['serializer'] === 'igbinary' && defined('Redis::SERIALIZER_IGBINARY')) {
-            		$serializer = Redis::SERIALIZER_IGBINARY;
+            	} else if ($server['serializer'] === 'igbinary') {
+                    if (defined('Redis::SERIALIZER_IGBINARY')) {
+                        $serializer = Redis::SERIALIZER_IGBINARY;
+                    } else {
+                        $serializer = Redis::SERIALIZER_PHP;
+                    }
             	}
             }
 
@@ -100,8 +104,12 @@ class Database extends \Illuminate\Redis\Database {
             	$serializer = Redis::SERIALIZER_NONE;
             	if ($server['serializer'] === 'php') {
             		$serializer = Redis::SERIALIZER_PHP;
-            	} else if ($server['serializer'] === 'igbinary' && defined('Redis::SERIALIZER_IGBINARY')) {
-            		$serializer = Redis::SERIALIZER_IGBINARY;
+            	} else if ($server['serializer'] === 'igbinary') {
+            		if (defined('Redis::SERIALIZER_IGBINARY')) {
+                        $serializer = Redis::SERIALIZER_IGBINARY;
+                    } else {
+                        $serializer = Redis::SERIALIZER_PHP;
+                    }
             	}
             	$redis->setOption(Redis::OPT_SERIALIZER, $serializer);
             }
