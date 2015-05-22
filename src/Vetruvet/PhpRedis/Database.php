@@ -3,6 +3,7 @@
 namespace Vetruvet\PhpRedis;
 
 use \Redis;
+use \RedisArray;
 
 class Database extends \Illuminate\Redis\Database {
 
