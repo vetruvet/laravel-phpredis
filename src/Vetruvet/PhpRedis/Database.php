@@ -13,7 +13,7 @@ class Database extends \Illuminate\Redis\Database {
      * @param  array  $servers
      * @return array
      */
-    protected function createAggregateClient(array $servers) {
+    protected function createAggregateClient(array $servers, array $options = []) {
         $options = array(
         	'lazy_connect' => true,
 	        'pconnect'     => false,
@@ -75,7 +75,7 @@ class Database extends \Illuminate\Redis\Database {
      * @param  array  $servers
      * @return array
      */
-    protected function createSingleClients(array $servers) {
+    protected function createSingleClients(array $servers, array $options = []) {
         $clients = array();
 
         foreach ($servers as $key => $server) {
