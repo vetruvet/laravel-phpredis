@@ -1,6 +1,5 @@
 {
     "name": "vetruvet/laravel-phpredis",
-    "version": "1.0.0",
     "description": "Use phpredis as the redis connection in Laravel",
     "keywords": [ "laravel", "redis", "phpredis" ],
     "license": "Apache",
