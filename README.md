@@ -9,7 +9,8 @@ Requirements
 ------------
 
  - PHP 5.3+
- - Laravel 4.x
+ - [PhpRedis]
+ - Laravel 4.x/5.x
 
 Installation
 -------------

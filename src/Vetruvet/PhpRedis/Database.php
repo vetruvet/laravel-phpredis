@@ -14,7 +14,7 @@ class Database extends \Illuminate\Redis\Database {
      * @return array
      */
     protected function createAggregateClient(array $servers, array $options = []) {
-        $options = array(
+        $options += array(
         	'lazy_connect' => true,
 	        'pconnect'     => false,
 	        'timeout'      => 0,
@@ -24,8 +24,8 @@ class Database extends \Illuminate\Redis\Database {
         foreach ($servers as $key => $server) {
         	if ($key === 'cluster') continue;
 
-        	$host    = empty($server['host'])    ? '127.0.0.1' : $server['host'];
-            $port    = empty($server['port'])    ? '6379'      : $server['port'];
+            $host = empty($server['host']) ? '127.0.0.1' : $server['host'];
+            $port = empty($server['port']) ? '6379'      : $server['port'];
 
             $serializer = Redis::SERIALIZER_NONE;
             if (!empty($server['serializer'])) {

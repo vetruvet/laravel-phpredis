@@ -10,7 +10,9 @@
         }
     ],
     "require": {
-
+        "ext-redis": "*",
+        "illuminate/redis": "5.* || 4.*",
+        "illuminate/support": "5.* || 4.*"
     },
     "autoload": {
         "psr-0": {
