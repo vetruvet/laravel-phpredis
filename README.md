@@ -70,6 +70,7 @@ All options are optional, you can specify an empty array to get the default conn
     'default' => array(
         'host'       => '127.0.0.1', // default: '127.0.0.1'
         'port'       => 6379,        // default: 6379
+        'password'   => password     // default: null
         'prefix'     => 'myapp:',    // default: ''
         'database'   => 7,           // default: 0
         'timeout'    => 0.5,         // default: 0 (no timeout)

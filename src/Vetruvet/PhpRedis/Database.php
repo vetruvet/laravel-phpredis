@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 namespace Vetruvet\PhpRedis;
 
@@ -41,6 +41,7 @@ class Database extends \Illuminate\Redis\Database {
             }
 
             $cluster[$host.':'.$port] = array(
+                'password'   => empty($server['password']) ? '' : $server['password'],
             	'prefix'     => empty($server['prefix'])   ? '' : $server['prefix'],
             	'database'   => empty($server['database']) ? 0  : $server['database'],
             	'serializer' => $serializer,
@@ -61,9 +62,10 @@ class Database extends \Illuminate\Redis\Database {
 
         foreach ($cluster as $host => $options) {
         	$redis = $ra->_instance($host);
-        	$redis->setOption(Redis::OPT_PREFIX, $options['prefix']);
-        	$redis->setOption(Redis::OPT_SERIALIZER, $options['serializer']);
-        	$redis->select($options['database']);
+            $redis->setOption(Redis::OPT_PREFIX, $options['prefix']);
+            $redis->setOption(Redis::OPT_SERIALIZER, $options['serializer']);
+            $redis->auth($options['password']);
+            $redis->select($options['database']);
         }
 
         return array('default' => $ra);
@@ -95,6 +97,10 @@ class Database extends \Illuminate\Redis\Database {
 
             if (!empty($server['prefix'])) {
             	$redis->setOption(Redis::OPT_PREFIX, $server['prefix']);
+            }
+
+            if (!empty($server['password'])) {
+                $redis->auth($server['password']);
             }
 
             if (!empty($server['database'])) {
